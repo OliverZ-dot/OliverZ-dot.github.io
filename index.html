@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Homepage | Tinghe Zhang</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 多层背景效果 -->
+    <div class="bg-layers">
+        <canvas id="particles-canvas" class="bg-layer"></canvas>
+        <canvas id="matrix-canvas" class="bg-layer"></canvas>
+        <div class="scanlines"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- 全息投影装饰 -->
+    <div class="hologram-effects">
+        <div class="hologram-ring ring-1"></div>
+        <div class="hologram-ring ring-2"></div>
+        <div class="hologram-ring ring-3"></div>
+    </div>
+
+    <!-- HUD界面元素 -->
+    <div class="hud-overlay">
+        <div class="hud-corner top-left">
+            <div class="hud-line horizontal"></div>
+            <div class="hud-line vertical"></div>
+            <div class="hud-text">SYSTEM ONLINE</div>
+        </div>
+        <div class="hud-corner top-right">
+            <div class="hud-line horizontal"></div>
+            <div class="hud-line vertical"></div>
+            <div class="hud-text" id="system-time">--:--:--</div>
+        </div>
+        <div class="hud-corner bottom-left">
+            <div class="hud-line horizontal"></div>
+            <div class="hud-line vertical"></div>
+            <div class="radar-scanner"></div>
+        </div>
+        <div class="hud-corner bottom-right">
+            <div class="hud-line horizontal"></div>
+            <div class="hud-line vertical"></div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="cyber-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="glitch-text" data-text="CYBER">CYBER</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-text="Home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-text="About">About</a></li>
+                <li><a href="#research-project" class="nav-link" data-text="Research&Project">Research&Project</a></li>
+                <li><a href="#publications" class="nav-link" data-text="Publications">Publications</a></li>
+                <li><a href="#education" class="nav-link" data-text="Education">Education</a></li>
+                <li><a href="#contact" class="nav-link" data-text="Contact">Contact</a></li>
+            </ul>
+            <div class="nav-indicator"></div>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 英雄区域 -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <!-- 头像照片 - 可以在这里添加你的照片 -->
+                <!-- 
+                <div class="cyber-image profile-image">
+                    <img src="images/profile.jpg" alt="Profile Photo">
+                </div>
+                -->
+                
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">root@TingheZhang-terminal</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">$</span> <span class="command">whoami</span>
+                        </div>
+                        <div class="terminal-line output">
+                            <h1 class="cyber-name">
+                                <span class="glitch-text" data-text="TingheZhang">TingheZhang</span>
+                            </h1>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">$</span> <span class="command" id="typewriter">研究员 | 开发者 | 探索者</span>
+                        </div>
+                        <div class="cursor-blink">█</div>
+                    </div>
+                </div>
+                
+                <!-- 头像照片示例 - 取消注释并替换为你的图片路径 -->
+                <!-- 
+                <div class="profile-image cyber-image">
+                    <img src="images/profile.jpg" alt="Profile Photo">
+                </div>
+                -->
+                
+                <!-- 数据可视化 -->
+                <div class="data-viz">
+                    <div class="data-bar" style="--height: 85%"><span>RESEARCH</span></div>
+                    <div class="data-bar" style="--height: 70%"><span>CODE</span></div>
+                    <div class="data-bar" style="--height: 90%"><span>INNOVATE</span></div>
+                    <div class="data-bar" style="--height: 75%"><span>LEARN</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我 -->
+        <section id="about" class="section">
+            <div class="cyber-card">
+                <div class="card-glow"></div>
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="section-icon">[*]</span>
+                        <h2 class="section-title glitch-text" data-text="AboutMe">AboutMe</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- 个人照片示例 - 取消注释并替换为你的图片路径 -->
+                        <!-- 
+                        <div class="cyber-image profile-image" style="float: right; margin: 0 0 20px 20px; max-width: 250px;">
+                            <img src="images/about-photo.jpg" alt="About Me">
+                        </div>
+                        -->
+                        
+                        <p class="text-content">Only two things are infinite, the universe and human stupidity, and I'm not sure about the former.——————Albert Einstein</p>
+                        <div class="hologram-box">
+                            <div class="holo-header">SYSTEM INFO</div>
+                            <div class="holo-content">
+                                <div class="info-line">
+                                    <span class="info-label">Research Direction:</span>
+                                    <span class="info-value typing-text" data-text="[AI]">[AI]</span>
+                                </div>
+                                <div class="info-line">
+                                    <span class="info-label">Areas of Interest:</span>
+                                    <span class="info-value typing-text" data-text="[CoT,RL,CV,Robotics,AI4S]">[CoT,RL,CV,Robotics,AI4S]</span>
+                                </div>
+                                <div class="info-line">
+                                    <span class="info-label">For now:</span>
+                                    <span class="info-value typing-text" data-text="[Interning @THU College of AI & Seeking for Phd this year]">[Interning @THU College of AI & Seeking for Phd this year]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究 -->
+        <section id="research-project" class="section">
+            <div class="cyber-card">
+                <div class="card-glow"></div>
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="section-icon">[>]</span>
+                        <h2 class="section-title glitch-text" data-text="research&project">research&project</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-title">Intern @ MIT</h3>
+                                <span class="project-status status-complete">COMPLETE</span>
+                            </div>
+                            <p class="project-desc">Advancing Alzheimer's PET Synthesis from MRI with Enhanced Pathological Feature Preservation</p>
+                            <div class="project-meta">
+                                <span class="meta-item">Jul - Sep 2024</span>
+                                <span class="meta-item">Outcome: Published</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-title">Collaborate with PKU</h3>
+                                <span class="project-status status-complete">COMPLETE</span>
+                            </div>
+                            <p class="project-desc">Towards Zero-shot Cross-lingual SLU with Syntax-aware Multi-view Contrastive Learning</p>
+                            <div class="project-meta">
+                                <span class="meta-item">Aug - Oct 2024</span>
+                                <span class="meta-item">Outcome: Published</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-title">National College Student Software Innovation Competition</h3>
+                                <span class="project-status status-complete">COMPLETE</span>
+                            </div>
+                            <p class="project-desc">Training and using deep learning inv oiceprint recognition detection of cold-rolled production line faults</p>
+                            <div class="project-meta">
+                                <span class="meta-item">Jul - Sep 2024</span>
+                                <span class="meta-item">Outcome: National First Prize</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-title">Research @ NEU</h3>
+                                <span class="project-status status-complete">COMPLETE</span>
+                            </div>
+                            <p class="project-desc">Secure and Efficient Distributed Matrix Multiplication Based on Polynomial Coding</p>
+                            <div class="project-meta">
+                                <span class="meta-item">Apr - May 2025</span>
+                                <span class="meta-item">Outcome: Published</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-title">National College Student Information Security Competition</h3>
+                                <span class="project-status status-complete">COMPLETE</span>
+                            </div>
+                            <p class="project-desc">Blockchain-based iris recognitiontechnology using LWE</p>
+                            <div class="project-meta">
+                                <span class="meta-item">Apr - Aug 2025</span>
+                                <span class="meta-item">Outcome: National First Prize</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-title">“Challenge Cup” - AI Main Competition</h3>
+                                <span class="project-status status-complete">COMPLETE</span>
+                            </div>
+                            <p class="project-desc">Developing an AI Agent toautonomously build an attack-defense test platform</p>
+                            <div class="project-meta">
+                                <span class="meta-item">Jun - Oct 2025</span>
+                                <span class="meta-item">Outcome: National First Prize(The Oonly Champion)</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-title">Interning @ Tsinghua CAI</h3>
+                                <span class="project-status status-active">ACTIVE</span>
+                            </div>
+                            <!-- 项目图片示例 - 取消注释并替换为你的图片路径 -->
+                            <!--
+                            <div class="cyber-image project-image">
+                                <img src="images/project1.jpg" alt="Project 1">
+                            </div>
+                            -->
+                            <p class="project-desc">It is a secret</p>
+                            <div class="project-meta">
+                                <span class="meta-item">Jan 2025 - now</span>
+                                <span class="meta-item">1%</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 1%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 发表论文 -->
+        <section id="publications" class="section">
+            <div class="cyber-card">
+                <div class="card-glow"></div>
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="section-icon">[#]</span>
+                        <h2 class="section-title glitch-text" data-text="Publications">Publications</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="paper-item">
+                            <div class="paper-glow"></div>
+                            <h3 class="paper-title">PWT: Advancing Alzheimer's PET Synthesis from MRI with Enhanced Pathological Feature Preservation</h3>
+                            <p class="paper-authors">Qiaoru Li, Yujie Ren, Hao Zhang, Wenqiang Ge, Jiacheng Huang, Jinglin Xie, Danjie Cheng, <strong>Tinghe Zhang</strong>, Yitong Huang, Naidan Xu, Yuliang Gai, Longfei Zhou</p>
+                            <p class="paper-affiliation">@Massachusetts Institute of Technology</p>
+                            <p class="paper-venue">IEEE 7th International Conference on Universal Village, 2024</p>
+                            <!-- 论文配图 -->
+                            <div class="cyber-image paper-image">
+                                <img src="ScreenShot_2026-01-08_183026_226.png" alt="Paper 1 Thumbnail">
+                                <img src="ScreenShot_2026-01-08_184700_276.png" alt="Paper 1 Thumbnail">
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/11189108" class="cyber-btn"><span>PDF</span></a>
+                                <a href="#" class="cyber-btn"><span>CODE</span></a>
+                                <a href="https://ieeexplore.ieee.org/document/11189108" class="cyber-btn"><span>DOI</span></a>
+                            </div>
+                        </div>
+                        <div class="paper-item">
+                            <div class="paper-glow"></div>
+                            <h3 class="paper-title">Secure and Efficient Distributed Matrix Multiplication Based on Polynomial Coding</h3>
+                            <p class="paper-authors">Xiaowen Fan, Yunfeng Zhang, <strong>Tinghe Zhang</strong>, Qiang Wang</p>
+                            <p class="paper-affiliation">@Northeastern University</p>
+                            <p class="paper-venue">IEEE 7th International Conference on Next Generation Data-driven Networks, 2025</p>
+                            <!-- 论文配图 -->
+                            <div class="cyber-image paper-image">
+                                <img src="ScreenShot_2026-01-08_190654_052.png" alt="Paper 2 Thumbnail">
+                                <img src="ScreenShot_2026-01-08_190709_231.png" alt="Paper 2 Thumbnail">
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/11182109" class="cyber-btn"><span>PDF</span></a>
+                                <a href="#" class="cyber-btn"><span>CODE</span></a>
+                                <a href="https://ieeexplore.ieee.org/abstract/document/11182109" class="cyber-btn"><span>DOI</span></a>
+                            </div>
+                        </div>
+                        <div class="paper-item">
+                            <div class="paper-glow"></div>
+                            <h3 class="paper-title">Towards Zero-shot Cross-lingual SLU with Syntax-aware Multi-view Contrastive Learning</h3>
+                            <p class="paper-authors">Yuxin Xie, Zhen Xiong, <strong>Tinghe Zhang</strong>, Mengke Cui, Yuqi Li, Zhiqi Huang, Zhihong Zhu</p>
+                            <p class="paper-affiliation">@Peking University</p>
+                            <p class="paper-venue">IEEE International Conference on Acoustics, Speech and Signal Processing, 2025</p>
+                            <!-- 论文配图 -->
+                            <div class="cyber-image paper-image">
+                                <img src="ScreenShot_2026-01-08_205626_623.png" alt="Paper 3 Thumbnail">
+                                <img src="ScreenShot_2026-01-08_205706_532.png" alt="Paper 3 Thumbnail">
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/10889521" class="cyber-btn"><span>PDF</span></a>
+                                <a href="#" class="cyber-btn"><span>CODE</span></a>
+                                <a href="https://ieeexplore.ieee.org/abstract/document/10889521" class="cyber-btn"><span>DOI</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教育背景 -->
+        <section id="education" class="section">
+            <div class="cyber-card">
+                <div class="card-glow"></div>
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="section-icon">[+]</span>
+                        <h2 class="section-title glitch-text" data-text="Education">Education</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="edu-item">
+                            <div class="edu-timeline"></div>
+                            <div class="edu-content">
+                                <h3 class="edu-degree">Bachelor</h3>
+                                <p class="edu-school">Northeastern University, Software College, Information Security</p>
+                                <div class="edu-meta">
+                                    <span>2023 - 2027</span>
+                                    <span>GPA: 4.23/5.0</span>
+                                    <span>Rank: 1/91, (Top 1.11%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我 -->
+        <section id="contact" class="section">
+            <div class="cyber-card">
+                <div class="card-glow"></div>
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="section-icon">[@]</span>
+                        <h2 class="section-title glitch-text" data-text="ContactMe">ContactMe</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-icon"> 📧</div>
+                                <div class="contact-info">
+                                    <span class="contact-label">Email</span>
+                                    <span class="contact-value">zhangtinghe5@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-info">
+                                    <span class="contact-label">Office</span>
+                                    <a href="https://collegeai.tsinghua.edu.cn/" class="contact-value">Interning@THU CAI</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">⚡</div>
+                                <div class="contact-info">
+                                    <span class="contact-label">GitHub</span>
+                                    <a href="https://github.com/OliverZ-dot" target="_blank" rel="noopener noreferrer" class="contact-value">Click Here</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📚</div>
+                                <div class="contact-info">
+                                    <span class="contact-label">Google Scholar</span>
+                                    <a href="https://scholar.google.com/citations?user=wc3AzqsAAAAJ&hl=zh-CN" class="contact-value">Click Here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="cyber-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Tinghe Zhang. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/OliverZ-dot" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                    <span>G</span>
+                </a>
+                <a href="mailto:zhangtinghe5@gmail.com" class="social-link" title="Email">
+                    <span>@</span>
+                </a>
+                <a href="#" class="social-link" title="Twitter">
+                    <span>T</span>
+                </a>
+                <a href="https://scholar.google.com/citations?user=wc3AzqsAAAAJ&hl=zh-CN" class="social-link" title="GoogleScholar">
+                    <span>S</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 鼠标跟随效果 -->
+    <div class="cursor-trail"></div>
+
+    <script src="effects.js"></script>
+    <script src="particles.js"></script>
+</body>
+</html>
