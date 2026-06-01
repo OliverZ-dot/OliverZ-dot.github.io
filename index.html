@@ -313,34 +313,6 @@
     .item-row.featured .item-detail strong { color: #c2410c; font-size: 1.08rem; }
     :root[data-theme="dark"] .item-row.featured .item-detail strong { color: #fdba74; }
 
-    .section-collapsible details > summary {
-      list-style: none;
-      cursor: pointer;
-      outline: none;
-    }
-    .section-collapsible details > summary::-webkit-details-marker { display: none; }
-    .section-collapsible details > summary > h2 {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .section-collapsible details > summary > h2 .toggle {
-      font-size: 0.65em;
-      color: var(--text-muted);
-      transition: transform 0.25s ease, color 0.2s ease;
-    }
-    .section-collapsible details[open] > summary > h2 .toggle {
-      transform: rotate(90deg);
-      color: var(--primary);
-    }
-    .section-collapsible details > summary:hover > h2 .toggle { color: var(--primary); }
-    .section-collapsible details > summary:focus-visible > h2 {
-      outline: 2px solid var(--primary);
-      outline-offset: 4px;
-      border-radius: 2px;
-    }
-
     .item-list.compact .item-row {
       align-items: baseline;
       margin-bottom: 12px;
@@ -505,6 +477,29 @@
       font-size: 0.95rem;
       color: var(--text);
       margin: 0 0 0.8em 0;
+    }
+
+    .oss-category {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 32px 0 14px 0;
+    }
+    .oss-category:first-of-type { margin-top: 0; }
+    .oss-stats {
+      white-space: nowrap;
+    }
+    .oss-stats i {
+      margin-right: 3px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .oss-category:has(+ .item-list:empty),
+    .oss-category + .item-list:empty {
+      display: none;
     }
 
     .site-footer {
@@ -778,42 +773,58 @@
       </ul>
     </section>
 
-    <section class="section-collapsible">
-      <details>
-        <summary>
-          <h2 id="competitions" class="section-title">Projects &amp; Competitions <i class="fas fa-chevron-right toggle" aria-hidden="true"></i></h2>
-        </summary>
-        <ul class="item-list compact">
-          <li class="item-row featured">
-            <div class="item-detail">
-              <strong>&ldquo;Challenge Cup&rdquo; AI Main Competition</strong>
-              <span class="muted">National First Prize (The Only Champion) &middot; ¥100,000</span>
-            </div>
-            <div class="item-date">Jun &ndash; Oct 2025</div>
-          </li>
-          <li class="item-row">
-            <div class="item-detail">
-              <strong>National College Student Information Security Competition</strong>
-              <span class="muted">National First Prize &middot; ¥6,000</span>
-            </div>
-            <div class="item-date">Apr &ndash; Aug 2025</div>
-          </li>
-          <li class="item-row">
-            <div class="item-detail">
-              <strong>National Software Innovation Contest</strong>
-              <span class="muted">National First Prize &middot; ¥15,000</span>
-            </div>
-            <div class="item-date">Jul &ndash; Sep 2024</div>
-          </li>
-          <li class="item-row">
-            <div class="item-detail">
-              <strong>National College Student Innovation and Entrepreneurship Training Program</strong>
-              <span class="muted">National level &middot; Leader &middot; Excellent &middot; ¥15,000</span>
-            </div>
-            <div class="item-date">Nov 2024 &ndash; 2026</div>
-          </li>
-        </ul>
-      </details>
+    <section>
+      <h2 id="competitions" class="section-title">Projects &amp; Competitions</h2>
+      <ul class="item-list compact">
+        <li class="item-row featured">
+          <div class="item-detail">
+            <strong>&ldquo;Challenge Cup&rdquo; AI Main Competition</strong>
+            <span class="muted">National First Prize (The Only Champion) &middot; ¥100,000</span>
+          </div>
+          <div class="item-date">Jun &ndash; Oct 2025</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>National College Student Information Security Competition</strong>
+            <span class="muted">National First Prize &middot; ¥6,000</span>
+          </div>
+          <div class="item-date">Apr &ndash; Aug 2025</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>National Software Innovation Contest</strong>
+            <span class="muted">National First Prize &middot; ¥15,000</span>
+          </div>
+          <div class="item-date">Jul &ndash; Sep 2024</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>National College Student Innovation and Entrepreneurship Training Program</strong>
+            <span class="muted">National level &middot; Leader &middot; Excellent &middot; ¥15,000</span>
+          </div>
+          <div class="item-date">Nov 2024 &ndash; 2026</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="opensource" class="section-title">Open Source Projects</h2>
+
+      <h3 class="oss-category">Co-developer</h3>
+      <ul class="item-list compact">
+        <li class="item-row featured">
+          <div class="item-detail">
+            <strong><a href="https://github.com/iLearn-Lab/NovelClaw" target="_blank" rel="noopener">NovelClaw</a></strong>
+            <span class="muted oss-stats"><i class="fas fa-star" aria-hidden="true"></i>309 &middot; <i class="fas fa-code-branch" aria-hidden="true"></i>43 &middot; Dynamic-memory-first collaborative AI for long-form story generation</span>
+          </div>
+        </li>
+      </ul>
+
+      <h3 class="oss-category">Developer</h3>
+      <ul class="item-list compact"></ul>
+
+      <h3 class="oss-category">Co-contributor</h3>
+      <ul class="item-list compact"></ul>
     </section>
 
     <section>
@@ -843,25 +854,21 @@
       </ul>
     </section>
 
-    <section class="section-collapsible">
-      <details>
-        <summary>
-          <h2 id="vision" class="section-title">Research Vision <i class="fas fa-chevron-right toggle" aria-hidden="true"></i></h2>
-        </summary>
-        <div class="vision-block">
-          <h3>Reasoning in Large Language Models <span class="program-tag">Current</span></h3>
-          <p>Focused on a framework with SFT, RL, and test-time scaling to improve the reasoning ability of LLMs. @ THU College of AI.</p>
-        </div>
-        <div class="vision-block">
-          <h3>Embodied AI &amp; Autonomous Driving <span class="program-tag">Current</span></h3>
-          <p>Exploring autonomous driving with 3D point-cloud inputs. @ THU College of AI.</p>
-        </div>
-        <div class="vision-block">
-          <h3>Long-term Research Goals</h3>
-          <p><strong>1. Moving Beyond Statistical Correlation, Toward True Understanding.</strong> I believe mainstream paradigms like the Transformer represent a highly efficient statistical shortcut rather than a genuine path to comprehension. My core pursuit is to conceive a novel architecture that enables intrinsic learning and autonomous reasoning in machines.</p>
-          <p><strong>2. Abandoning the &ldquo;General&rdquo; Mirage, Embracing Domain Breakthroughs.</strong> I do not pursue the AGI fantasy of one model to solve everything. Instead, I find the vision of specialist superintelligence both feasible and compelling: building systems capable of assimilating knowledge, refining reasoning, and surpassing human expertise within a specific domain.</p>
-        </div>
-      </details>
+    <section>
+      <h2 id="vision" class="section-title">Research Vision</h2>
+      <div class="vision-block">
+        <h3>Reasoning in Large Language Models <span class="program-tag">Current</span></h3>
+        <p>Focused on a framework with SFT, RL, and test-time scaling to improve the reasoning ability of LLMs. @ THU College of AI.</p>
+      </div>
+      <div class="vision-block">
+        <h3>Embodied AI &amp; Autonomous Driving <span class="program-tag">Current</span></h3>
+        <p>Exploring autonomous driving with 3D point-cloud inputs. @ THU College of AI.</p>
+      </div>
+      <div class="vision-block">
+        <h3>Long-term Research Goals</h3>
+        <p><strong>1. Moving Beyond Statistical Correlation, Toward True Understanding.</strong> I believe mainstream paradigms like the Transformer represent a highly efficient statistical shortcut rather than a genuine path to comprehension. My core pursuit is to conceive a novel architecture that enables intrinsic learning and autonomous reasoning in machines.</p>
+        <p><strong>2. Abandoning the &ldquo;General&rdquo; Mirage, Embracing Domain Breakthroughs.</strong> I do not pursue the AGI fantasy of one model to solve everything. Instead, I find the vision of specialist superintelligence both feasible and compelling: building systems capable of assimilating knowledge, refining reasoning, and surpassing human expertise within a specific domain.</p>
+      </div>
     </section>
 
     <footer class="site-footer">
