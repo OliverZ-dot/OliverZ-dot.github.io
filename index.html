@@ -281,7 +281,7 @@
     .item-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 24px;
       margin-bottom: 18px;
       padding-bottom: 18px;
@@ -330,6 +330,28 @@
       font-weight: 400;
       margin-right: 4px;
     }
+    .item-logos {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+    }
+    .item-logos a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+    }
+    .item-logos a:hover { opacity: 0.78; }
+    .item-logos img {
+      display: block;
+      height: 42px;
+      width: auto;
+      max-width: 108px;
+      object-fit: contain;
+    }
+    .item-logos img.logo-wide { max-width: 128px; }
     .item-detail { flex: 1; min-width: 0; }
     .item-detail strong {
       display: block;
@@ -371,29 +393,20 @@
       background: linear-gradient(135deg, #ff6b7a 0%, #ffa06b 100%);
       color: #1a1a1a;
     }
+    .program-tag.incoming {
+      background: linear-gradient(135deg, #1d4ed8 0%, #0ea5e9 100%);
+      box-shadow: 0 1px 3px rgba(14, 165, 233, 0.28);
+    }
+    :root[data-theme="dark"] .program-tag.incoming {
+      background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+      color: #0b1220;
+    }
 
     .pub-caption {
       font-size: 0.88rem;
       color: var(--text-muted);
       margin-bottom: 26px;
     }
-    .rm-oss-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: -4px 0 14px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(90, 169, 255, 0.35);
-      background: rgba(90, 169, 255, 0.08);
-      color: var(--text-strong);
-      font-size: 0.84rem;
-      text-decoration: none;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-    .rm-oss-badge:hover { background: rgba(90, 169, 255, 0.16); border-color: rgba(90, 169, 255, 0.55); text-decoration: none; color: var(--text-strong); }
-    .rm-oss-badge i { color: #5aa9ff; }
-    .rm-oss-badge strong { font-weight: 700; }
     .publication {
       display: flex;
       gap: 24px;
@@ -548,6 +561,7 @@
       .publication { flex-direction: column; align-items: stretch; }
       .publogo { width: 100%; height: 180px; max-width: none; }
       .item-row { flex-direction: column; gap: 6px; }
+      .item-logos { flex-wrap: wrap; }
       .item-date { text-align: left; min-width: 0; margin-top: 2px; }
       .theme-toggle { top: 10px; right: 10px; width: 36px; height: 36px; }
     }
@@ -1046,7 +1060,8 @@
         <h1>Tinghe Zhang</h1>
         <div class="role-title">
           <b>B.Eng. Student in Computer Security</b><br>
-          Software College, <a href="https://www.neu.edu.cn/" target="_blank" rel="noopener">Northeastern University</a>
+          Software College, <a href="https://www.neu.edu.cn/" target="_blank" rel="noopener">Northeastern University</a><br>
+          Incoming Ph.D. at <a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener">NLPR-MAIS-CASIA</a>, advised by Prof. <a href="https://en.wikipedia.org/wiki/Tan_Tieniu" target="_blank" rel="noopener">Tieniu Tan</a>
         </div>
 
         <div class="contact-info">
@@ -1062,7 +1077,6 @@
         <div class="highlight-box">
           <i class="fas fa-bullhorn"></i>
           Interning at <b>THU College of AI</b> on LLM reasoning &amp; embodied AI. 
-          <b>Incoming Ph.D. in NLPR-MAIS-CASIA, where my supervisor is Prof. Tieniu Tan</b>
         </div>
       </div>
 
@@ -1085,11 +1099,7 @@
 
     <section>
       <h2 id="research-map" class="section-title">Research Map</h2>
-      <p class="pub-caption">An interactive, left-to-right map of how my beliefs, research directions, papers and open-source projects connect. Click a node to explore its branch and see details/links; click it again (or press Esc) to reset.</p>
-      <a class="rm-oss-badge" href="https://github.com/OliverZ-dot/research-map" target="_blank" rel="noopener">
-        <i class="fab fa-github" aria-hidden="true"></i>
-        I open-sourced this widget &mdash; feel free to use it on your own site: <strong>github.com/OliverZ-dot/research-map</strong>
-      </a>
+      <p class="pub-caption">An interactive, left-to-right map of how my beliefs, research directions, papers and open-source projects connect. Click a node to explore its branch and see details/links; click it again (or press Esc) to reset. I open-sourced this widget &mdash; feel free to use it on your own site: <a href="https://github.com/OliverZ-dot/research-map" target="_blank" rel="noopener">github.com/OliverZ-dot/research-map</a>.</p>
 
       <div class="rm-wrap" id="rm-wrap">
         <div class="rm-toolbar">
@@ -1155,20 +1165,44 @@
       <h2 id="experience" class="section-title">Experience</h2>
       <ul class="item-list">
         <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.cas.cn/" target="_blank" rel="noopener" title="Chinese Academy of Sciences"><img class="logo-wide" src="images/logos/cas.png" alt=""></a>
+            <a href="http://ia.cas.cn/" target="_blank" rel="noopener" title="Institute of Automation, CAS"><img src="images/logos/casia.png" alt=""></a>
+            <a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener" title="State Key Laboratory of Multimodal Artificial Intelligence Systems"><img class="logo-wide" src="images/logos/mais.svg" alt=""></a>
+          </div>
           <div class="item-detail">
-            <strong><a href="https://collegeai.tsinghua.edu.cn/" target="_blank" rel="noopener">THU College of AI</a> <span class="program-tag">Current</span></strong>
+            <strong><a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener">NLPR-MAIS-CASIA</a> <span class="program-tag incoming">Incoming</span></strong>
+            <span class="line">Incoming Ph.D. student &mdash; State Key Laboratory of Multimodal Artificial Intelligence Systems, Institute of Automation, Chinese Academy of Sciences. Advisor: Prof. <a href="https://en.wikipedia.org/wiki/Tan_Tieniu" target="_blank" rel="noopener">Tieniu Tan</a>. Not yet enrolled.</span>
+          </div>
+          <div class="item-date">Incoming (2027)</div>
+        </li>
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.tsinghua.edu.cn/" target="_blank" rel="noopener" title="Tsinghua University"><img src="images/logos/tsinghua.png" alt=""></a>
+            <a href="https://collegeai.tsinghua.edu.cn/" target="_blank" rel="noopener" title="THU College of AI"><img src="images/logos/thu-cai-mark.png" alt=""></a>
+            <a href="https://collegeai.tsinghua.edu.cn/en/Research/Research_Groups/Lamb_Lab.htm" target="_blank" rel="noopener" title="Lamb Lab"><img class="logo-wide" src="images/logos/lamb-lab.svg" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong><a href="https://collegeai.tsinghua.edu.cn/" target="_blank" rel="noopener">THU College of AI</a> &middot; <a href="https://collegeai.tsinghua.edu.cn/en/Research/Research_Groups/Lamb_Lab.htm" target="_blank" rel="noopener">Lamb Lab</a> <span class="program-tag">Current</span></strong>
             <span class="line">Research Intern &mdash; Reasoning models (SFT, RL, test-time scaling) &amp; embodied AI for autonomous driving.</span>
           </div>
           <div class="item-date">Dec 2025 &ndash; Present</div>
         </li>
         <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.mit.edu/" target="_blank" rel="noopener" title="MIT"><img class="logo-wide" src="images/logos/mit.svg" alt=""></a>
+            <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener" title="MIT CSAIL"><img class="logo-wide" src="images/logos/csail.png" alt=""></a>
+          </div>
           <div class="item-detail">
-            <strong><a href="https://www.mit.edu/" target="_blank" rel="noopener">MIT</a></strong>
+            <strong><a href="https://www.mit.edu/" target="_blank" rel="noopener">MIT</a> &middot; <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">CSAIL</a></strong>
             <span class="line">Research Intern &mdash; Advancing Alzheimer&rsquo;s PET synthesis from MRI with enhanced pathological feature preservation.</span>
           </div>
           <div class="item-date">Jul &ndash; Sep 2024</div>
         </li>
         <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.neu.edu.cn/" target="_blank" rel="noopener" title="Northeastern University"><img class="logo-wide" src="images/logos/neu-logo.png" alt=""></a>
+          </div>
           <div class="item-detail">
             <strong><a href="https://www.neu.edu.cn/" target="_blank" rel="noopener">Northeastern University</a></strong>
             <span class="line">Research &mdash; Secure distributed matrix multiplication; trajectory prediction with planning/reaction decomposition.</span>
@@ -1274,6 +1308,22 @@
       <h2 id="education" class="section-title">Education</h2>
       <ul class="item-list">
         <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.cas.cn/" target="_blank" rel="noopener" title="Chinese Academy of Sciences"><img class="logo-wide" src="images/logos/cas.png" alt=""></a>
+            <a href="http://ia.cas.cn/" target="_blank" rel="noopener" title="Institute of Automation, CAS"><img src="images/logos/casia.png" alt=""></a>
+            <a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener" title="State Key Laboratory of Multimodal Artificial Intelligence Systems"><img class="logo-wide" src="images/logos/mais.svg" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong><a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener">NLPR-MAIS-CASIA</a> <span class="program-tag incoming">Incoming</span></strong>
+            <span class="line">Ph.D. in Multimodal Artificial Intelligence &middot; Institute of Automation, Chinese Academy of Sciences</span>
+            <span class="muted">Advisor: Prof. <a href="https://en.wikipedia.org/wiki/Tan_Tieniu" target="_blank" rel="noopener">Tieniu Tan</a> &middot; not yet enrolled</span>
+          </div>
+          <div class="item-date">Incoming (2027)</div>
+        </li>
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.neu.edu.cn/" target="_blank" rel="noopener" title="Northeastern University"><img class="logo-wide" src="images/logos/neu-logo.png" alt=""></a>
+          </div>
           <div class="item-detail">
             <strong>Northeastern University</strong>
             <span class="line">B.Eng. in Computer Security &middot; Software College</span>
