@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /homepage.html
+Disallow: /research-map.js
+Disallow: /research-map.data.js

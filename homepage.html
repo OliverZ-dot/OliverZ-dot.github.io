@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tinghe Zhang | NEU</title>
+  <meta name="description" content="Tinghe Zhang — undergraduate at Northeastern University, Software College. Research on AI, LLM reasoning, embodied AI, and computer security.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', saved || prefers);
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-elev: #f9f9f9;
+      --text: #333333;
+      --text-muted: #666666;
+      --text-strong: #1a1a1a;
+      --primary: #0056b3;
+      --accent: #d82644;
+      --link-hover: #b32424;
+      --border: #eeeeee;
+      --border-dashed: #e6e6e6;
+      --pill-bg: #f0f2f5;
+      --pill-bg-hover: #ffffff;
+      --pill-news-bg: #eef4fa;
+      --shadow-avatar: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.08);
+      --shadow-pill: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --highlight-bg: #f0f7ff;
+      --avatar-ring: #ffffff;
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0f1115;
+      --bg-elev: #171a21;
+      --text: #d4d6db;
+      --text-muted: #9ca3af;
+      --text-strong: #f3f4f6;
+      --primary: #5aa9ff;
+      --accent: #ff6b7a;
+      --link-hover: #ffb1bb;
+      --border: #262a33;
+      --border-dashed: #2a2f38;
+      --pill-bg: #1f242d;
+      --pill-bg-hover: #262c36;
+      --pill-news-bg: #0f2030;
+      --shadow-avatar: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.3);
+      --shadow-pill: 0 4px 6px rgba(0, 0, 0, 0.2);
+      --highlight-bg: #0f1f33;
+      --avatar-ring: #1c2029;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-weight: 700;
+      color: var(--text-strong);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover, a:focus-visible {
+      color: var(--link-hover);
+      text-decoration: underline;
+      outline: none;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 50;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-elev);
+      color: var(--text-strong);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .theme-toggle:hover {
+      transform: rotate(15deg);
+      border-color: var(--primary);
+    }
+    .theme-toggle .fa-sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .fa-sun { display: inline; }
+    :root[data-theme="dark"] .theme-toggle .fa-moon { display: none; }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+    }
+
+    .bio-text { flex: 1; min-width: 0; }
+
+    .bio-text h1 {
+      font-size: 2.8rem;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .role-title {
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .role-title b { color: var(--text-strong); }
+    .role-title .muted { color: var(--text-muted); }
+
+    .contact-info {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .social-links {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pill-bg);
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .social-links a:hover, .social-links a:focus-visible {
+      background: var(--pill-bg-hover);
+      border-color: var(--border);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-pill);
+      text-decoration: none;
+    }
+
+    .highlight-box {
+      background-color: var(--highlight-bg);
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      margin-top: 22px;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.95rem;
+      color: var(--text-strong);
+    }
+    .highlight-box i { margin-right: 8px; color: var(--primary); }
+
+    .profile-image-container {
+      flex-shrink: 0;
+      width: 240px;
+      height: 240px;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: var(--shadow-avatar);
+      border: 4px solid var(--avatar-ring);
+    }
+
+    .section-title {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+      margin-top: 60px;
+      margin-bottom: 26px;
+      font-size: 1.6rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    section p { margin: 0 0 1em 0; }
+
+    .news-scroll {
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-elev);
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      mask-image: linear-gradient(to bottom, black calc(100% - 28px), transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 28px), transparent 100%);
+    }
+    .news-scroll::-webkit-scrollbar { width: 6px; }
+    .news-scroll::-webkit-scrollbar-track { background: transparent; }
+    .news-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .news-scroll::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    .news-list { list-style: none; padding-left: 0; margin: 0; }
+    .news-list li { margin-bottom: 12px; line-height: 1.65; font-size: 0.95rem; }
+    .news-list li:last-child { margin-bottom: 18px; }
+    .news-date {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+      background: var(--pill-news-bg);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+      vertical-align: 1px;
+    }
+    .news-hl { color: #c2410c; font-weight: 700; }
+    :root[data-theme="dark"] .news-hl { color: #fdba74; }
+
+    .item-list { list-style: none; padding: 0; margin: 0; }
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed var(--border-dashed);
+    }
+    .item-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .item-row.featured {
+      position: relative;
+      padding: 12px 16px 14px 16px;
+      margin: 0 -16px 18px -16px;
+      background: linear-gradient(to right, #fff5ec 0%, transparent 70%);
+      border-radius: 6px;
+      border-bottom: 1px dashed var(--border-dashed);
+    }
+    :root[data-theme="dark"] .item-row.featured {
+      background: linear-gradient(to right, #2a1a10 0%, transparent 70%);
+    }
+    .item-row.featured::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 14px;
+      width: 3px;
+      background: #ea580c;
+      border-radius: 2px;
+    }
+    :root[data-theme="dark"] .item-row.featured::before { background: #fb923c; }
+    .item-row.featured .item-detail strong { color: #c2410c; font-size: 1.08rem; }
+    :root[data-theme="dark"] .item-row.featured .item-detail strong { color: #fdba74; }
+
+    .item-list.compact .item-row {
+      align-items: baseline;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+    }
+    .item-list.compact .item-detail strong { display: inline; margin: 0; }
+    .item-list.compact .item-detail strong + .muted {
+      display: inline;
+      margin-left: 4px;
+      font-size: 0.92rem;
+    }
+    .item-list.compact .item-detail strong + .muted::before {
+      content: ' · ';
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-right: 4px;
+    }
+    .item-logos {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+    }
+    .item-logos a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+    }
+    .item-logos a:hover { opacity: 0.78; }
+    .item-logos img {
+      display: block;
+      height: 42px;
+      width: auto;
+      max-width: 108px;
+      object-fit: contain;
+    }
+    .item-logos img.logo-wide { max-width: 128px; }
+    .item-detail { flex: 1; min-width: 0; }
+    .item-detail strong {
+      display: block;
+      font-size: 1.05rem;
+      color: var(--text-strong);
+      margin-bottom: 4px;
+    }
+    .item-detail span.line {
+      display: block;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    .item-detail span.muted { color: var(--text-muted); font-size: 0.92rem; }
+    .item-date {
+      flex-shrink: 0;
+      text-align: right;
+      min-width: 150px;
+      color: var(--text-muted);
+      font-feature-settings: "tnum";
+      font-size: 0.92rem;
+    }
+
+    .program-tag {
+      display: inline-block;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: linear-gradient(135deg, #d82644 0%, #ff7547 100%);
+      padding: 2px 9px;
+      border-radius: 4px;
+      vertical-align: 2px;
+      margin-left: 4px;
+      box-shadow: 0 1px 3px rgba(216, 38, 68, 0.25);
+    }
+    :root[data-theme="dark"] .program-tag {
+      background: linear-gradient(135deg, #ff6b7a 0%, #ffa06b 100%);
+      color: #1a1a1a;
+    }
+    .program-tag.incoming {
+      background: linear-gradient(135deg, #1d4ed8 0%, #0ea5e9 100%);
+      box-shadow: 0 1px 3px rgba(14, 165, 233, 0.28);
+    }
+    :root[data-theme="dark"] .program-tag.incoming {
+      background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+      color: #0b1220;
+    }
+
+    .pub-caption {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+    }
+    .publication {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 36px;
+      align-items: flex-start;
+    }
+    .publogo {
+      width: 180px;
+      height: 120px;
+      border-radius: 6px;
+      box-shadow: var(--shadow-card);
+      flex-shrink: 0;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      transition: transform 0.2s;
+      background: var(--bg-elev);
+    }
+    .publication:hover .publogo { transform: scale(1.02); }
+    .pub-content { flex: 1; min-width: 0; }
+    .pub-title {
+      font-family: 'Merriweather', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: var(--text-strong);
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .pub-title:hover { color: var(--primary); text-decoration: none; }
+    .pub-authors {
+      color: var(--text);
+      margin: 6px 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .pub-authors b { color: var(--text-strong); }
+    .auth-eq {
+      font-size: 0.78em;
+      vertical-align: super;
+      font-weight: 700;
+      color: var(--accent);
+      margin-left: 1px;
+    }
+    .pub-venue {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
+      margin: 5px 0 7px 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-strong);
+      letter-spacing: 0.2px;
+    }
+    .pub-venue.venue-preprint {
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 600;
+    }
+    .venue-award {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+    .venue-award::before {
+      content: '· ';
+      color: var(--text-muted);
+      margin-right: 2px;
+      font-weight: 400;
+    }
+    .pub-links {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+    .pub-links a {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .pub-links a i { margin-right: 4px; }
+
+    .vision-block {
+      padding: 16px 0;
+      border-top: 1px dashed var(--border-dashed);
+    }
+    .vision-block:first-of-type { border-top: none; }
+    .vision-block h3 {
+      font-size: 1.05rem;
+      margin: 0 0 8px 0;
+    }
+    .vision-block p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin: 0 0 0.8em 0;
+    }
+
+    .oss-category {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 32px 0 14px 0;
+    }
+    .oss-category:first-of-type { margin-top: 0; }
+    .oss-stats {
+      white-space: nowrap;
+    }
+    .oss-stats i {
+      margin-right: 3px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .oss-category:has(+ .item-list:empty),
+    .oss-category + .item-list:empty {
+      display: none;
+    }
+
+    .site-footer {
+      margin-top: 80px;
+      padding: 30px 0 24px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .site-footer a { color: var(--text-muted); }
+    .site-footer a:hover { color: var(--primary); }
+
+    @media (max-width: 768px) {
+      .container { margin: 24px auto; }
+      .profile-header {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 26px;
+        padding-bottom: 36px;
+        margin-bottom: 40px;
+      }
+      .bio-text h1 { font-size: 2.1rem; }
+      .role-title { font-size: 1rem; }
+      .social-links { justify-content: center; }
+      .highlight-box { text-align: left; }
+      .profile-image-container { width: 180px; height: 180px; }
+      .section-title { font-size: 1.4rem; margin-top: 50px; }
+      .publication { flex-direction: column; align-items: stretch; }
+      .publogo { width: 100%; height: 180px; max-width: none; }
+      .item-row { flex-direction: column; gap: 6px; }
+      .item-logos { flex-wrap: wrap; }
+      .item-date { text-align: left; min-width: 0; margin-top: 2px; }
+      .theme-toggle { top: 10px; right: 10px; width: 36px; height: 36px; }
+    }
+
+    /* ---------- Research Map ---------- */
+    .rm-wrap {
+      --rm-bg: #0a0d16;
+      --rm-bg-2: #0e1220;
+      --rm-grid-dot: rgba(255, 255, 255, 0.05);
+      --rm-panel: rgba(255, 255, 255, 0.045);
+      --rm-panel-border: rgba(255, 255, 255, 0.10);
+      --rm-panel-border-hover: rgba(255, 255, 255, 0.24);
+      --rm-text: #eef1f8;
+      --rm-text-muted: #8d95ab;
+      --rm-root: #ffd166;
+      --rm-field: #5aa9ff;
+      --rm-topic: #22d3ee;
+      --rm-idea: #ff7a59;
+      --rm-paper: #34e2b0;
+      --rm-repo: #b48bff;
+      --rm-milestone: #9aa3b8;
+
+      position: relative;
+      margin-top: 4px;
+      border-radius: 16px;
+      border: 1px solid var(--rm-panel-border);
+      background:
+        radial-gradient(1100px 480px at 12% -10%, rgba(90, 169, 255, 0.16), transparent 60%),
+        radial-gradient(900px 420px at 90% 110%, rgba(180, 139, 255, 0.14), transparent 60%),
+        linear-gradient(180deg, var(--rm-bg) 0%, var(--rm-bg-2) 100%);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      color: var(--rm-text);
+    }
+    .rm-wrap::before, .rm-wrap::after {
+      content: '';
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .rm-wrap::before {
+      background: radial-gradient(circle, rgba(90, 169, 255, 0.5), transparent 70%);
+      top: -160px;
+      left: -120px;
+      animation: rm-drift1 14s ease-in-out infinite;
+    }
+    .rm-wrap::after {
+      background: radial-gradient(circle, rgba(180, 139, 255, 0.45), transparent 70%);
+      bottom: -160px;
+      right: -100px;
+      animation: rm-drift2 18s ease-in-out infinite;
+    }
+    @keyframes rm-drift1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(40px, 30px); } }
+    @keyframes rm-drift2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-30px, -40px); } }
+
+    .rm-toolbar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--rm-panel-border);
+    }
+    .rm-toolbar-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .rm-toolbar-divider { width: 1px; height: 20px; background: var(--rm-panel-border); margin: 0 2px; }
+    .rm-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.82rem;
+      color: var(--rm-text-muted);
+    }
+    .rm-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+    .rm-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 8px currentColor;
+      display: inline-block;
+    }
+    .rm-controls { display: flex; gap: 8px; }
+    .rm-btn {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid var(--rm-panel-border);
+      background: var(--rm-panel);
+      color: var(--rm-text);
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+    .rm-btn:hover { border-color: var(--rm-panel-border-hover); color: #fff; transform: translateY(-1px); }
+    .rm-btn.rm-btn-active { background: rgba(90, 169, 255, 0.18); border-color: rgba(90, 169, 255, 0.5); color: #8ec4ff; }
+
+    .rm-scroll {
+      position: relative;
+      z-index: 1;
+      max-height: 620px;
+      overflow: auto;
+      background-image: radial-gradient(circle, var(--rm-grid-dot) 1px, transparent 1px);
+      background-size: 24px 24px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    }
+    .rm-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+    .rm-scroll::-webkit-scrollbar-track { background: transparent; }
+    .rm-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 4px; }
+    .rm-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.32); }
+
+    .rm-canvas-outer { position: relative; }
+    .rm-canvas { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
+    .rm-edges { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; }
+    .rm-edge {
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-dasharray: 5 6;
+      opacity: 0.8;
+      animation: rm-flow 4s linear infinite;
+      transition: opacity 0.3s ease;
+    }
+    .rm-edge.rm-dim { opacity: 0.06; }
+    .rm-edge.rm-edge-highlight {
+      opacity: 1;
+      stroke-width: 3;
+      animation-duration: 1.6s;
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+    }
+    @keyframes rm-flow { to { stroke-dashoffset: -220; } }
+
+    .rm-nodes-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+    .rm-node {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--rm-panel);
+      border: 1px solid var(--rm-panel-border);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.3s ease;
+    }
+    .rm-node::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      border-radius: 0 0 2px 2px;
+      opacity: 0.9;
+    }
+    .rm-node[data-type="field"]::before { background: var(--rm-field); }
+    .rm-node[data-type="topic"]::before { background: var(--rm-topic); }
+    .rm-node[data-type="idea"]::before { background: var(--rm-idea); }
+    .rm-node[data-type="paper"]::before { background: var(--rm-paper); }
+    .rm-node[data-type="repo"]::before { background: var(--rm-repo); }
+    .rm-node[data-type="milestone"]::before { background: var(--rm-milestone); }
+    .rm-node[data-type="root"]::before { display: none; }
+    .rm-node:hover { transform: translateY(-3px); border-color: var(--rm-panel-border-hover); }
+    .rm-node:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .rm-node.rm-dim { opacity: 0.15; }
+    .rm-node.rm-active { box-shadow: 0 0 0 2px #fff, 0 8px 24px rgba(0, 0, 0, 0.45); }
+
+    .rm-node-icon {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .rm-node[data-type="root"] .rm-node-icon { color: var(--rm-root); }
+    .rm-node[data-type="field"] .rm-node-icon { color: var(--rm-field); }
+    .rm-node[data-type="topic"] .rm-node-icon { color: var(--rm-topic); }
+    .rm-node[data-type="idea"] .rm-node-icon { color: var(--rm-idea); }
+    .rm-node[data-type="paper"] .rm-node-icon { color: var(--rm-paper); }
+    .rm-node[data-type="repo"] .rm-node-icon { color: var(--rm-repo); }
+    .rm-node[data-type="milestone"] .rm-node-icon { color: var(--rm-milestone); }
+
+    .rm-node[data-type="root"] {
+      background: linear-gradient(135deg, rgba(255, 209, 102, 0.16), rgba(255, 209, 102, 0.04));
+      border-color: rgba(255, 209, 102, 0.4);
+      box-shadow: 0 0 0 1px rgba(255, 209, 102, 0.32), 0 0 22px rgba(255, 209, 102, 0.2);
+      animation: rm-pulse-root 3.2s ease-in-out infinite;
+    }
+    .rm-node[data-type="root"] .rm-node-title { color: #ffe9b3; font-size: 0.95rem; }
+    .rm-node[data-type="field"]:hover { box-shadow: 0 0 0 1px rgba(90, 169, 255, 0.4), 0 10px 26px rgba(90, 169, 255, 0.18); }
+    .rm-node[data-type="topic"]:hover { box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.4), 0 10px 26px rgba(34, 211, 238, 0.18); }
+    .rm-node[data-type="idea"]:hover { box-shadow: 0 0 0 1px rgba(255, 122, 89, 0.4), 0 10px 26px rgba(255, 122, 89, 0.18); }
+    .rm-node[data-type="paper"]:hover { box-shadow: 0 0 0 1px rgba(52, 226, 176, 0.4), 0 10px 26px rgba(52, 226, 176, 0.18); }
+    .rm-node[data-type="repo"]:hover { box-shadow: 0 0 0 1px rgba(180, 139, 255, 0.4), 0 10px 26px rgba(180, 139, 255, 0.18); }
+
+    @keyframes rm-pulse-root {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(255, 209, 102, 0.28), 0 0 16px rgba(255, 209, 102, 0.16); }
+      50% { box-shadow: 0 0 0 1px rgba(255, 209, 102, 0.55), 0 0 32px rgba(255, 209, 102, 0.32); }
+    }
+
+    /* Edit-mode per-node action buttons */
+    .rm-node-actions {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      display: none;
+      gap: 4px;
+      z-index: 2;
+    }
+    .rm-editing .rm-node-actions { display: flex; }
+    .rm-node-act {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: #161a26;
+      color: #cfd4e2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+    .rm-node-act:hover { background: #232838; color: #fff; }
+    .rm-node-act-danger:hover { background: rgba(255, 90, 90, 0.25); color: #ff8a8a; }
+
+    /* Drag & drop re-parenting (edit mode) */
+    .rm-editing .rm-node[draggable="true"] { cursor: grab; }
+    .rm-node.rm-dragging { opacity: 0.35; cursor: grabbing; }
+    .rm-node.rm-drop-child {
+      box-shadow: 0 0 0 2px #34e2b0, 0 0 22px rgba(52, 226, 176, 0.5);
+      transform: translateY(-3px) scale(1.02);
+    }
+    .rm-node.rm-drop-before { box-shadow: 0 -3px 0 0 #34e2b0, 0 0 14px rgba(52, 226, 176, 0.4); }
+    .rm-node.rm-drop-after { box-shadow: 0 3px 0 0 #34e2b0, 0 0 14px rgba(52, 226, 176, 0.4); }
+
+    .rm-node-body { min-width: 0; }
+    .rm-node-title {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--rm-text);
+    }
+    .rm-node-sub, .rm-node-venue {
+      font-size: 0.72rem;
+      color: var(--rm-text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+    .rm-node-venue { color: #a9e8d4; }
+
+    .rm-current-tag {
+      position: absolute;
+      top: -8px;
+      right: -6px;
+      font-size: 0.6rem !important;
+      padding: 1px 6px !important;
+    }
+
+    .rm-popover {
+      position: absolute;
+      width: 260px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(14, 18, 32, 0.97);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      color: var(--rm-text);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+      z-index: 5;
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+    .rm-popover.rm-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .rm-popover h4 { margin: 4px 0 4px 0; font-family: 'Lato', sans-serif; font-size: 1rem; color: #fff; }
+    .rm-popover-sub { color: var(--rm-text-muted); font-size: 0.78rem; margin-bottom: 4px; }
+    .rm-popover-meta { color: #a9e8d4; font-size: 0.76rem; margin-bottom: 8px; }
+    .rm-popover p { color: #cfd4e2; font-size: 0.82rem; line-height: 1.55; margin: 0 0 10px 0; }
+    .rm-popover-type {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .rm-popover-type[data-type="field"] { color: var(--rm-field); }
+    .rm-popover-type[data-type="topic"] { color: var(--rm-topic); }
+    .rm-popover-type[data-type="idea"] { color: var(--rm-idea); }
+    .rm-popover-type[data-type="paper"] { color: var(--rm-paper); }
+    .rm-popover-type[data-type="repo"] { color: var(--rm-repo); }
+    .rm-popover-type[data-type="milestone"] { color: var(--rm-milestone); }
+    .rm-popover-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .rm-popover-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+    .rm-popover-links a:hover { background: rgba(255, 255, 255, 0.18); text-decoration: none; color: #fff; }
+    .rm-popover-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: var(--rm-text-muted);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .rm-popover-close:hover { color: #fff; }
+
+    /* ---------- Research Map: editor modal ---------- */
+    .rm-modal-root { position: relative; }
+    .rm-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 14, 0.72);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 20px;
+    }
+    .rm-modal {
+      width: 100%;
+      max-width: 480px;
+      max-height: 86vh;
+      overflow-y: auto;
+      background: #10131f;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      color: var(--rm-text, #eef1f8);
+    }
+    .rm-modal-wide { max-width: 620px; }
+    .rm-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .rm-modal-head h3 { margin: 0; font-family: 'Lato', sans-serif; font-size: 1.05rem; color: #fff; }
+    .rm-modal-close { background: none; border: none; color: #8d95ab; font-size: 1.1rem; cursor: pointer; line-height: 1; }
+    .rm-modal-close:hover { color: #fff; }
+    .rm-modal-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+    .rm-field { display: flex; flex-direction: column; gap: 5px; font-size: 0.82rem; color: #8d95ab; flex: 1; min-width: 0; }
+    .rm-field input[type="text"], .rm-field input[type="url"], .rm-field select, .rm-field textarea {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #eef1f8;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+    .rm-field textarea { resize: vertical; }
+    .rm-field input:focus, .rm-field select:focus, .rm-field textarea:focus {
+      outline: 2px solid var(--rm-field, #5aa9ff);
+      outline-offset: 0;
+      border-color: transparent;
+    }
+    .rm-field-row { display: flex; gap: 12px; }
+    .rm-field-row .rm-field { min-width: 0; }
+    .rm-field-checkbox { flex-direction: row; align-items: center; gap: 8px; justify-content: flex-start; }
+    .rm-link-rows { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .rm-link-row { display: flex; gap: 8px; align-items: center; }
+    .rm-link-row .rm-link-label { width: 100px; flex-shrink: 0; }
+    .rm-link-row .rm-link-url { flex: 1; min-width: 0; }
+    .rm-link-remove { background: none; border: none; color: #8d95ab; cursor: pointer; font-size: 0.9rem; flex-shrink: 0; }
+    .rm-link-remove:hover { color: #ff7a59; }
+    .rm-btn-text { background: none; border: none; color: var(--rm-field, #5aa9ff); font-size: 0.82rem; cursor: pointer; padding: 2px 0; align-self: flex-start; }
+    .rm-btn-text:hover { color: #8ec4ff; }
+    .rm-modal-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .rm-modal-foot-right { display: flex; gap: 10px; }
+    .rm-btn-ghost, .rm-btn-primary, .rm-btn-danger {
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-family: 'Lato', sans-serif;
+    }
+    .rm-btn-ghost { background: rgba(255, 255, 255, 0.06); color: #eef1f8; border-color: rgba(255, 255, 255, 0.14); }
+    .rm-btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+    .rm-btn-primary { background: linear-gradient(135deg, #5aa9ff, #7dd3fc); color: #07101d; }
+    .rm-btn-primary:hover { filter: brightness(1.08); }
+    .rm-btn-danger { background: rgba(255, 90, 90, 0.12); color: #ff8a8a; border-color: rgba(255, 90, 90, 0.3); }
+    .rm-btn-danger:hover { background: rgba(255, 90, 90, 0.2); }
+    .rm-modal-hint { font-size: 0.82rem; color: #8d95ab; line-height: 1.6; margin: 0; }
+    .rm-modal-hint code { background: rgba(255, 255, 255, 0.08); padding: 1px 5px; border-radius: 4px; }
+    .rm-code-area {
+      width: 100%;
+      background: #0a0d16;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      color: #a9e8d4;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+      font-size: 0.78rem;
+      padding: 10px;
+      resize: vertical;
+    }
+    .rm-modal-error { color: #ff8a8a; font-size: 0.8rem; min-height: 1em; margin: 0; }
+
+    .rm-hint {
+      position: relative;
+      z-index: 1;
+      padding: 10px 20px;
+      font-size: 0.78rem;
+      color: var(--rm-text-muted);
+      border-top: 1px solid var(--rm-panel-border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .rm-scroll { max-height: 460px; }
+      .rm-toolbar { padding: 12px 14px; }
+      .rm-legend { gap: 10px; font-size: 0.76rem; }
+      .rm-popover { width: 220px; }
+      .rm-modal { max-width: 100%; }
+      .rm-field-row { flex-direction: column; gap: 12px; }
+      .rm-link-row .rm-link-label { width: 84px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="(function(){var r=document.documentElement;var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}})()">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <i class="fas fa-sun" aria-hidden="true"></i>
+  </button>
+
+  <div class="container">
+
+    <header class="profile-header">
+      <div class="bio-text">
+        <h1>Tinghe Zhang</h1>
+        <div class="role-title">
+          <b>B.Eng. Student in Computer Security</b><br>
+          Software College, <a href="https://www.neu.edu.cn/" target="_blank" rel="noopener">Northeastern University</a><br>
+          Incoming Ph.D. at <a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener">NLPR-MAIS-CASIA</a>, advised by Prof. <a href="https://en.wikipedia.org/wiki/Tan_Tieniu" target="_blank" rel="noopener">Tieniu Tan</a>
+        </div>
+
+        <div class="contact-info">
+          Email: <a href="mailto:zhangtinghe5@gmail.com">zhangtinghe5@gmail.com</a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://scholar.google.com/citations?user=wc3AzqsAAAAJ&hl=zh-CN" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+          <a href="https://github.com/OliverZ-dot" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://collegeai.tsinghua.edu.cn/" target="_blank" rel="noopener"><i class="fas fa-building"></i> THU CAI</a>
+        </div>
+
+        <div class="highlight-box">
+          <i class="fas fa-bullhorn"></i>
+          Interning at <b>THU College of AI</b> on LLM reasoning &amp; embodied AI. 
+        </div>
+      </div>
+
+      <div class="profile-image-container">
+        <img src="images/avatar.png"
+             alt="Tinghe Zhang portrait"
+             class="profile-photo"
+             onerror="this.src='19d5772285955.png'">
+      </div>
+    </header>
+
+    <section>
+      <h2 id="biography" class="section-title">Biography</h2>
+      <p>I am an undergraduate student at <strong>Northeastern University</strong> (2023&ndash;2027), majoring in Computer Security at the Software College (GPA 4.24/5.0, ranked <strong>1/93</strong>, top 1.01%). My research interests include <strong>LLM reasoning</strong>, <strong>AI Security</strong>, <strong>Computer vision</strong>, and <strong>Embodied AI</strong>. I am currently a research intern at the <a href="https://collegeai.tsinghua.edu.cn/" target="_blank" rel="noopener">THU College of AI</a>, working on reasoning models and autonomous driving with 3D point-cloud inputs.</p>
+      <p>I deeply believe in <strong>JEPA</strong>.</p>
+      <p>I proposed a new concept <strong>"Symbiotic AI"</strong> (I gonna write something to explain what it is like. Wait for my link.)</p>
+      <p><em>&ldquo;What I cannot create, I do not understand.&rdquo;</em> &mdash; Richard Feynman</p>
+      <p>👋 If you are interested in my research or would like to collaborate (both research/business) or just wanna make a friend, feel free to reach out via <a href="mailto:zhangtinghe5@gmail.com">email</a>. </p>
+    </section>
+
+    <section>
+      <h2 id="research-map" class="section-title">Research Map</h2>
+      <p class="pub-caption">An interactive, left-to-right map of how my beliefs, research directions, papers and open-source projects connect. Click a node to explore its branch and see details/links; click it again (or press Esc) to reset. I open-sourced this widget &mdash; feel free to use it on your own site: <a href="https://github.com/OliverZ-dot/research-map" target="_blank" rel="noopener">github.com/OliverZ-dot/research-map</a>.</p>
+
+      <div class="rm-wrap" id="rm-wrap">
+        <div class="rm-toolbar">
+          <div class="rm-legend" aria-hidden="true">
+            <span class="rm-legend-item"><span class="rm-dot" style="color: var(--rm-field);"></span>Domain</span>
+            <span class="rm-legend-item"><span class="rm-dot" style="color: var(--rm-topic);"></span>Topic</span>
+            <span class="rm-legend-item"><span class="rm-dot" style="color: var(--rm-idea);"></span>Idea</span>
+            <span class="rm-legend-item"><span class="rm-dot" style="color: var(--rm-paper);"></span>Paper</span>
+            <span class="rm-legend-item"><span class="rm-dot" style="color: var(--rm-repo);"></span>Repo</span>
+            <span class="rm-legend-item"><span class="rm-dot" style="color: var(--rm-milestone);"></span>Milestone</span>
+          </div>
+          <div class="rm-toolbar-group">
+            <button type="button" class="rm-btn" data-rm-action="toggle-edit" aria-label="Toggle edit mode" title="Edit mode"><i class="fas fa-pen" aria-hidden="true"></i></button>
+            <button type="button" class="rm-btn" data-rm-action="add-node" aria-label="Add node" title="Add node"><i class="fas fa-plus" aria-hidden="true"></i></button>
+            <button type="button" class="rm-btn" data-rm-action="export" aria-label="Export map" title="Export"><i class="fas fa-file-export" aria-hidden="true"></i></button>
+            <button type="button" class="rm-btn" data-rm-action="import" aria-label="Import map" title="Import"><i class="fas fa-file-import" aria-hidden="true"></i></button>
+            <button type="button" class="rm-btn" data-rm-action="reset" aria-label="Reset to default" title="Reset to default"><i class="fas fa-rotate-left" aria-hidden="true"></i></button>
+            <span class="rm-toolbar-divider" aria-hidden="true"></span>
+            <button type="button" class="rm-btn" data-rm-zoom="out" aria-label="Zoom out" title="Zoom out"><i class="fas fa-magnifying-glass-minus" aria-hidden="true"></i></button>
+            <button type="button" class="rm-btn" data-rm-zoom="reset" aria-label="Reset zoom" title="Reset zoom"><i class="fas fa-compress" aria-hidden="true"></i></button>
+            <button type="button" class="rm-btn" data-rm-zoom="in" aria-label="Zoom in" title="Zoom in"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="rm-scroll" id="rm-scroll" tabindex="0" aria-label="Research map, scrollable and zoomable">
+          <div class="rm-canvas-outer" id="rm-canvas-outer">
+            <div class="rm-canvas" id="rm-canvas">
+              <svg class="rm-edges" id="rm-edges"></svg>
+              <div class="rm-nodes-layer" id="rm-nodes"></div>
+              <div class="rm-popover" id="rm-popover"></div>
+            </div>
+          </div>
+        </div>
+        <div class="rm-hint" id="rm-hint"><i class="fas fa-arrows-left-right" aria-hidden="true"></i> Scroll to explore &middot; click a node to trace its branch &middot; click <i class="fas fa-pen" aria-hidden="true"></i> to edit this map yourself</div>
+        <div class="rm-modal-root" id="rm-modal-root"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="news" class="section-title">News</h2>
+      <div class="news-scroll" tabindex="0" aria-label="News, scrollable list">
+        <ul class="news-list">
+          <li><span class="news-date">2025/08</span> One paper on Trajectory Prediciton accepted at <strong>ICDM 2026</strong>.🎉</li>
+          <li><span class="news-date">2025/07</span> One paper on Trajectory Prediciton accepted at <strong>ACM MM 2026</strong>.🎉</li>
+          <li><span class="news-date">2026/05</span> One paper submitted to <strong>ICDM 2026</strong>. Good luck 🙏!</li>
+          <li><span class="news-date">2026/05</span> One paper submitted to <strong>EMNLP 2026</strong>. Good luck 🙏!</li>
+          <li><span class="news-date">2026/05</span> One paper submitted to <strong>Neurips 2026</strong>. Good luck 🙏!</li>
+          <li><span class="news-date">2026/04</span> One paper submitted to <strong>ACM MM 2026</strong>. Good luck 🙏!</li>
+          <li><span class="news-date">2026/04</span> <strong>TOPOSHIELD</strong> accepted at <strong>ACL Findings 2026</strong> (collaboration with SEU).🎉</li>
+          <li><span class="news-date">2026/01</span> Started research internship at <strong>THU College of AI</strong> on LLM reasoning &amp; embodied AI.</li>
+          <li><span class="news-date">2025/12</span> Awarded the <strong>National Scholarship</strong> (top 0.2%).</li>
+          <li><span class="news-date">2025/10</span> Won <span class="news-hl">National First Prize (The Only Champion)</span> at the &ldquo;Challenge Cup&rdquo; AI Main Competition (¥100,000).🥳</li>
+          <li><span class="news-date">2025/08</span> <span class="news-hl">National First Prize</span> at the National College Student Information Security Competition.🥳</li>
+          <li><span class="news-date">2025/05</span> Paper on distributed matrix multiplication accepted at <strong>IEEE NGDN 2025</strong>.🎉</li>
+          <li><span class="news-date">2025/05</span> <span class="news-hl">National First Prize</span> at the National Software Innovation Contest.🥳</li>
+          <li><span class="news-date">2025/01</span> Paper on cross-lingual SLU accepted at <strong>ICASSP 2025</strong> (collaboration with PKU).🎉</li>
+          <li><span class="news-date">2024/09</span> Completed research internship at <strong>MIT</strong>; PWT paper published at <strong>IEEE UV 2024</strong>.🎉</li>
+          <li><span class="news-date">2023/09</span> Started my academic journey at Northeastern University.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="experience" class="section-title">Experience</h2>
+      <ul class="item-list">
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.cas.cn/" target="_blank" rel="noopener" title="Chinese Academy of Sciences"><img class="logo-wide" src="images/logos/cas.png" alt=""></a>
+            <a href="http://ia.cas.cn/" target="_blank" rel="noopener" title="Institute of Automation, CAS"><img src="images/logos/casia.png" alt=""></a>
+            <a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener" title="State Key Laboratory of Multimodal Artificial Intelligence Systems"><img class="logo-wide" src="images/logos/mais.svg" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong><a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener">NLPR-MAIS-CASIA</a> <span class="program-tag incoming">Incoming</span></strong>
+            <span class="line">Incoming Ph.D. student &mdash; State Key Laboratory of Multimodal Artificial Intelligence Systems, Institute of Automation, Chinese Academy of Sciences. Advisor: Prof. <a href="https://en.wikipedia.org/wiki/Tan_Tieniu" target="_blank" rel="noopener">Tieniu Tan</a>. Not yet enrolled.</span>
+          </div>
+          <div class="item-date">Incoming (2027)</div>
+        </li>
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.tsinghua.edu.cn/" target="_blank" rel="noopener" title="Tsinghua University"><img src="images/logos/tsinghua.png" alt=""></a>
+            <a href="https://collegeai.tsinghua.edu.cn/" target="_blank" rel="noopener" title="THU College of AI"><img src="images/logos/thu-cai-mark.png" alt=""></a>
+            <a href="https://collegeai.tsinghua.edu.cn/en/Research/Research_Groups/Lamb_Lab.htm" target="_blank" rel="noopener" title="Lamb Lab"><img class="logo-wide" src="images/logos/lamb-lab.svg" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong><a href="https://collegeai.tsinghua.edu.cn/" target="_blank" rel="noopener">THU College of AI</a> &middot; <a href="https://collegeai.tsinghua.edu.cn/en/Research/Research_Groups/Lamb_Lab.htm" target="_blank" rel="noopener">Lamb Lab</a> <span class="program-tag">Current</span></strong>
+            <span class="line">Research Intern &mdash; Reasoning models (SFT, RL, test-time scaling) &amp; embodied AI for autonomous driving.</span>
+          </div>
+          <div class="item-date">Dec 2025 &ndash; Present</div>
+        </li>
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.mit.edu/" target="_blank" rel="noopener" title="MIT"><img class="logo-wide" src="images/logos/mit.svg" alt=""></a>
+            <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener" title="MIT CSAIL"><img class="logo-wide" src="images/logos/csail.png" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong><a href="https://www.mit.edu/" target="_blank" rel="noopener">MIT</a> &middot; <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">CSAIL</a></strong>
+            <span class="line">Research Intern &mdash; Advancing Alzheimer&rsquo;s PET synthesis from MRI with enhanced pathological feature preservation.</span>
+          </div>
+          <div class="item-date">Jul &ndash; Sep 2024</div>
+        </li>
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.neu.edu.cn/" target="_blank" rel="noopener" title="Northeastern University"><img class="logo-wide" src="images/logos/neu-logo.png" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong><a href="https://www.neu.edu.cn/" target="_blank" rel="noopener">Northeastern University</a></strong>
+            <span class="line">Research &mdash; Secure distributed matrix multiplication; trajectory prediction with planning/reaction decomposition.</span>
+          </div>
+          <div class="item-date">2024 &ndash; Present</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="publications" class="section-title">Selected Publications</h2>
+      <p class="pub-caption"><span class="auth-eq" aria-hidden="true">*</span> co-first author &nbsp;&middot;&nbsp; <a href="https://scholar.google.com/citations?user=wc3AzqsAAAAJ&hl=zh-CN" target="_blank" rel="noopener">Full list on Google Scholar</a></p>
+
+      <div class="publication">
+        <img src="ScreenShot_2026-05-25_165531_203.png" class="publogo" alt="E2C">
+        <div class="pub-content">
+          <span class="pub-title">Explore-Execute Chain: Towards an Efficient Structured Reasoning Paradigm</span>
+          <div class="pub-venue venue-preprint">Under review @ EMNLP 2026</div>
+          <div class="pub-authors">Kaisen Yang<span class="auth-eq">*</span>, <b>Tinghe Zhang<span class="auth-eq">*</span></b>, Rushi Shah, Kaicheng Yang, Qinwei Ma, Dianbo Liu, Alex Lamb</div>
+        <div class="pub-links">
+        <a href="" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i> PDF</a>
+        <a href="https://github.com/OliverZ-dot/Explore-Execute-Chain" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+    </div>
+        </div>
+      </div>
+
+      <div class="publication">
+        <img src="20260525151718_711_35.png" class="publogo" alt="What Transformer FFNs Never See">
+        <div class="pub-content">
+          <span class="pub-title">What Transformer FFNs Never See: Theory, Diagnosis, and Lightweight Remediation</span>
+          <div class="pub-venue venue-preprint">Under review @ Neurips 2026</div>
+          <div class="pub-authors"><b>Tinghe Zhang</b>, Yucheng Xiao, Alex Lamb</div>
+        <div class="pub-links">
+        <a href="" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i> PDF</a>
+        <a href="https://github.com/NoWall-572/TopoSHIELD" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+    </div>
+        </div>
+      </div>
+
+      <div class="publication">
+        <img src="20260909163511_65_5.png" class="publogo" alt="NodeJEPA architecture">
+        <div class="pub-content">
+          <a class="pub-title" href="https://arxiv.org/abs/2608.04381" target="_blank" rel="noopener">NodeJEPA: Structure-Conditioned Latent Prediction for Node-Level Graph Self-Supervised Learning</a>
+          <div class="pub-venue venue-preprint">Preprint</div>
+          <div class="pub-authors"><b>Tinghe Zhang</b>, Jian Xu, Jiaheng Chen, Jiaxing Li, Yucheng Xiao, Qiang Wang</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2608.04381" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i> PDF</a>
+            <a href="https://github.com/OliverZ-dot/Node-Jepa" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+
+  <div class="publication">
+        <img src="ScreenShot_2026-04-04_151640_986.png" class="publogo" alt="TOPOSHIELD teaser">
+        <div class="pub-content">
+          <span class="pub-title">TOPOSHIELD: Reshaping the Flow of Malice via Spatio-Temporal Risk-Aware Topological Evolution in Multi-Agent Systems</span>
+          <div class="pub-venue">ACL Findings 2026</div>
+          <div class="pub-authors">Ruiyang Huang, Chenxi Wang, <b>Tinghe Zhang</b>, Fengrui Liu, Jiayan Sun, Haocheng Wang, Yifan Wu</div>
+         <div class="pub-links">
+        <a href="" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i> PDF</a>
+        <a href="https://github.com/NoWall-572/TopoSHIELD" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+    </div>
+        </div>
+      </div>
+
+      <div class="publication">
+        <img src="ScreenShot_2026-04-04_150357_059.png" class="publogo" alt="Trajectory prediction teaser">
+        <div class="pub-content">
+          <span class="pub-title">A Unified Framework for Trajectory Prediction with Explicit Planning and Reaction Decomposition</span>
+          <div class="pub-venue">ACM MM 2026</div>
+          <div class="pub-authors">Jiaheng Chen, Jiaxing Li, <b>Tinghe Zhang</b>, Chao Peng Guo</div>
+          <div class="pub-links">
+        <a href="" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i> PDF</a>
+        <a href="https://github.com/NoWall-572/TopoSHIELD" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+    </div>
+        </div>
+      </div>
+
+      <div class="publication">
+        <img src="ScreenShot_2026-09-08_152224_454.png" class="publogo" alt="GEAR architecture teaser">
+        <div class="pub-content">
+          <span class="pub-title">GEAR: From Dynamic Encoding to Dynamic Activation in Social Trajectory Prediction</span>
+          <div class="pub-venue">ICDM 2026</div>
+          <div class="pub-authors">Jiaheng Chen, Jiaxing Li, Leixia Wang, Jianan Ju, <b>Tinghe Zhang</b></div>
+        </div>
+      </div>
+
+      <div class="publication">
+        <img src="ScreenShot_2026-01-08_205626_623.png" class="publogo" alt="Cross-lingual SLU teaser">
+        <div class="pub-content">
+          <a class="pub-title" href="https://ieeexplore.ieee.org/abstract/document/10889521" target="_blank" rel="noopener">Towards Zero-shot Cross-lingual SLU with Syntax-aware Multi-view Contrastive Learning</a>
+          <div class="pub-venue">ICASSP 2025</div>
+          <div class="pub-authors">Yuxin Xie, Zhen Xiong, <b>Tinghe Zhang</b>, Mengke Cui, Yuqi Li, Zhiqi Huang, Zhihong Zhu</div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10889521" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i> PDF</a>
+            <a href="https://github.com/NoWall-572/TopoSHIELD" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="education" class="section-title">Education</h2>
+      <ul class="item-list">
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.cas.cn/" target="_blank" rel="noopener" title="Chinese Academy of Sciences"><img class="logo-wide" src="images/logos/cas.png" alt=""></a>
+            <a href="http://ia.cas.cn/" target="_blank" rel="noopener" title="Institute of Automation, CAS"><img src="images/logos/casia.png" alt=""></a>
+            <a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener" title="State Key Laboratory of Multimodal Artificial Intelligence Systems"><img class="logo-wide" src="images/logos/mais.svg" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong><a href="https://mais.ia.ac.cn/" target="_blank" rel="noopener">NLPR-MAIS-CASIA</a> <span class="program-tag incoming">Incoming</span></strong>
+            <span class="line">Ph.D. in Multimodal Artificial Intelligence &middot; Institute of Automation, Chinese Academy of Sciences</span>
+            <span class="muted">Advisor: Prof. <a href="https://en.wikipedia.org/wiki/Tan_Tieniu" target="_blank" rel="noopener">Tieniu Tan</a> &middot; not yet enrolled</span>
+          </div>
+          <div class="item-date">Incoming (2027)</div>
+        </li>
+        <li class="item-row">
+          <div class="item-logos" aria-hidden="true">
+            <a href="https://www.neu.edu.cn/" target="_blank" rel="noopener" title="Northeastern University"><img class="logo-wide" src="images/logos/neu-logo.png" alt=""></a>
+          </div>
+          <div class="item-detail">
+            <strong>Northeastern University</strong>
+            <span class="line">B.Eng. in Computer Security &middot; Software College</span>
+            <span class="muted">GPA 4.24/5.0 &middot; ranked 1/93 (top 1.01%) &middot; IELTS 7.0</span>
+          </div>
+          <div class="item-date">Sep 2023 &ndash; Jun 2027 (expected)</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>Liaoning Experimental High School</strong>
+            <span class="line">High School Diploma</span>
+          </div>
+          <div class="item-date">2020 &ndash; 2023</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="honors" class="section-title">Selected Honors &amp; Awards</h2>
+      <ul class="item-list compact">
+        <li class="item-row featured">
+          <div class="item-detail">
+            <strong>National Scholarship</strong>
+            <span class="muted">Top 0.2%</span>
+          </div>
+          <div class="item-date">2025</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>NEU First-Class Scholarship</strong>
+            <span class="muted">Top 3%</span>
+          </div>
+          <div class="item-date">2025</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="competitions" class="section-title">Projects &amp; Competitions</h2>
+      <ul class="item-list compact">
+        <li class="item-row featured">
+          <div class="item-detail">
+            <strong>&ldquo;Challenge Cup&rdquo; AI Main Competition</strong>
+            <span class="muted">National First Prize (The Only Champion) &middot; ¥100,000</span>
+          </div>
+          <div class="item-date">Jun &ndash; Oct 2025</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>National College Student Information Security Competition</strong>
+            <span class="muted">National First Prize &middot; ¥6,000</span>
+          </div>
+          <div class="item-date">Apr &ndash; Aug 2025</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>National Software Innovation Contest</strong>
+            <span class="muted">National First Prize &middot; ¥15,000</span>
+          </div>
+          <div class="item-date">Jul &ndash; Sep 2024</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>National College Student Innovation and Entrepreneurship Training Program</strong>
+            <span class="muted">National level &middot; Leader &middot; Excellent &middot; ¥15,000</span>
+          </div>
+          <div class="item-date">Nov 2024 &ndash; 2026</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="opensource" class="section-title">Open Source Projects</h2>
+
+      <h3 class="oss-category">Co-developer</h3>
+      <ul class="item-list compact">
+        <li class="item-row">
+          <div class="item-detail">
+            <strong><a href="https://github.com/iLearn-Lab/NovelClaw" target="_blank" rel="noopener">NovelClaw</a></strong>
+            <span class="muted oss-stats"><i class="fas fa-star" aria-hidden="true"></i>323 &middot; <i class="fas fa-code-branch" aria-hidden="true"></i>43 &middot; Dynamic-memory-first collaborative AI for long-form story generation</span>
+          </div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong><a href="https://github.com/OliverZ-dot/Explore-Execute-Chain" target="_blank" rel="noopener">E2C-Paradigm</a></strong>
+            <span class="muted oss-stats"><i class="fas fa-star" aria-hidden="true"></i>28 &middot; <i class="fas fa-code-branch" aria-hidden="true"></i>1 &middot; High Efficient Reasoning Paradigm</span>
+          </div>
+        </li>
+      </ul>
+
+
+      
+      <h3 class="oss-category">Developer</h3>
+      <ul class="item-list compact"></ul>
+
+      <h3 class="oss-category">Contributor</h3>
+      <ul class="item-list compact">
+        <li class="item-row">
+          <div class="item-detail">
+            <strong><a href="https://github.com/HKUDS/RAG-Anything" target="_blank" rel="noopener">RAG-Anything</a></strong>
+            <span class="muted oss-stats"><i class="fas fa-star" aria-hidden="true"></i>23.3k &middot; <i class="fas fa-code-branch" aria-hidden="true"></i>2.7k &middot; All-in-One multimodal RAG framework</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="activities" class="section-title">Activities &amp; Services</h2>
+      <ul class="item-list compact">
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>Communist Youth League Branch Secretary</strong>
+            <span class="muted">Software College, NEU</span>
+          </div>
+          <div class="item-date">Sep 2024 &ndash; Present</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>Student Representative of College</strong>
+            <span class="muted">Software College, NEU</span>
+          </div>
+          <div class="item-date">Nov 2024 &ndash; Present</div>
+        </li>
+        <li class="item-row">
+          <div class="item-detail">
+            <strong>Vice Chair, NEU&ndash;Huawei Singularity Club</strong>
+            <span class="muted">东北大学-华为奇点俱乐部</span>
+          </div>
+          <div class="item-date">May 2025 &ndash; Present</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="vision" class="section-title">Research Vision</h2>
+      <div class="vision-block">
+        <h3>Reasoning in Large Language Models <span class="program-tag">Current</span></h3>
+        <p>Focused on a framework with SFT, RL, and test-time scaling to improve the reasoning ability of LLMs. @ THU College of AI.</p>
+      </div>
+      <div class="vision-block">
+        <h3>Embodied AI &amp; Autonomous Driving <span class="program-tag">Current</span></h3>
+        <p>Exploring autonomous driving with 3D point-cloud inputs. @ THU College of AI.</p>
+      </div>
+      <div class="vision-block">
+        <h3>Long-term Research Goals</h3>
+        <p><strong>1. Moving Beyond Statistical Correlation, Toward True Understanding.</strong> I believe mainstream paradigms like the Transformer represent a highly efficient statistical shortcut rather than a genuine path to comprehension. My core pursuit is to conceive a novel architecture that enables intrinsic learning and autonomous reasoning in machines.</p>
+        <p><strong>2. Abandoning the &ldquo;General&rdquo; Mirage, Embracing Domain Breakthroughs.</strong> I do not pursue the AGI fantasy of one model to solve everything. Instead, I find the vision of specialist superintelligence both feasible and compelling: building systems capable of assimilating knowledge, refining reasoning, and surpassing human expertise within a specific domain.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Tinghe Zhang &middot; Template inspired by <a href="https://ruihuangai.github.io/" target="_blank" rel="noopener">Rui Huang</a>.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script src="research-map.data.js"></script>
+  <script src="research-map.js"></script>
+
+</body>
+</html>
